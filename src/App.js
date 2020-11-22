@@ -1,16 +1,25 @@
-import React, { useEffect, useState  } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { UserPlacemark } from './user-placemark/user-placemark';
 
 const mapData = {
   center: [55.751574, 37.573856],
   zoom: 5
 };
 
-const coordinates = [
-  [55.684758, 37.738521],
-  [57.684758, 39.738521]
-];
+const coordinates = [];
+
+const placemarkProps = {
+  properties: {
+    balloonContent: 'Это балун'
+  },
+  modules: ['geoObject.addon.balloon', 'geoObject.addon.hint']
+}
+
+const myClick = () => {
+  alert(1)
+}
 
 const App = () => {
   const [count, setCount] = useState(false);
@@ -25,13 +34,10 @@ const App = () => {
   return (
     <div className='container'>
       <YMaps>
-        <Map defaultState={mapData} onClick={onClickMap} style={{
-          height: 500,
-          width: 900
-        }}>
-          {coordinates.map(coordinate => <Placemark geometry={coordinate} key={coordinate[0]} />)}
+        <Map defaultState={mapData} onClick={onClickMap} height="600px" width="1000px">
+          {/* {coordinates.map(coordinate => <Placemark geometry={coordinate} key={coordinate[0]} {...placemarkProps} />)} */}
+          {coordinates.map(coordinate => <UserPlacemark geometry={coordinate} key={coordinate[0]} myClick={myClick} user={{id: 0}} {...placemarkProps} />)}
         </Map>
-        {console.log('otrisovka')}
       </YMaps>
     </div>
   );
