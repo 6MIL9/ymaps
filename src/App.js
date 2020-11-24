@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import { UserPlacemark } from './user-placemark/user-placemark';
+import logo from './logo.svg';
 
 const mapData = {
   center: [55.751574, 37.573856],
