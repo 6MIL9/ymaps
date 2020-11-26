@@ -35,9 +35,13 @@ const App = () => {
   return (
     <div className='container'>
       <YMaps>
-        <Map defaultState={mapData} onClick={onClickMap} height="600px" width="1000px">
+        <Map defaultState={mapData} onClick={onClickMap} height="600px" width="1000px" modules={[
+          'templateLayoutFactory',
+          'geoObject.addon.balloon',
+          'clusterer.addon.balloon',
+        ]}>
           {/* {coordinates.map(coordinate => <Placemark geometry={coordinate} key={coordinate[0]} {...placemarkProps} />)} */}
-          {coordinates.map(coordinate => <UserPlacemark geometry={coordinate} key={coordinate[0]} myClick={myClick} user={{id: 0}} {...placemarkProps} />)}
+          {coordinates.map(coordinate => <UserPlacemark geometry={coordinate} key={coordinate[0]} myClick={myClick} user={{ id: 0 }} {...placemarkProps} />)}
         </Map>
       </YMaps>
     </div>

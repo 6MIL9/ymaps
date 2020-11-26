@@ -3,8 +3,7 @@ import $ from 'jquery';
 import { Placemark, withYMaps } from "react-yandex-maps";
 import { UserPlacemarkBalloon } from './user-placemark-balloon';
 import { UserPlacemarkIcon } from './user-placemark-icon'
-
-
+import img from './os.png'
 
 function UserPlacemark(props) {
   const UserPlacemarkCore = React.memo(({ ymaps }) => {
@@ -43,14 +42,8 @@ function UserPlacemark(props) {
           build: function () {
             LayoutIcon.superclass.build.call(this);
 
-            this.element = $('.map__placemark-icon', this.getParentElement());
-
-          },
-
-          clear: function() {
-
-            LayoutIcon.superclass.clear.call(this);
-          },
+            this.element = $('.map__placemark-icon-container', this.getParentElement());
+          }
         },
       );
       return LayoutIcon;
@@ -61,9 +54,9 @@ function UserPlacemark(props) {
         {...props}
         options={{
           balloonContentLayout: makeLayout(ymaps.templateLayoutFactory),
-          iconLayout: makeLayoutIcon(ymaps.templateLayoutFactory),
-          // iconImageHref: 'exclamation.svg',
-          balloonPanelMaxMapArea: 0,
+          iconLayout: 'default#image',
+          iconImageHref: img,
+          iconImageSize: [15, 35],
           ...props.options,
         }}
       />
