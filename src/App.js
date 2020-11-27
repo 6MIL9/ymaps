@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import { UserPlacemark } from './user-placemark/user-placemark';
-import logo from './logo.svg';
+
 
 const mapData = {
   center: [55.751574, 37.573856],
@@ -12,14 +12,7 @@ const mapData = {
 const coordinates = [];
 
 const placemarkProps = {
-  properties: {
-    balloonContent: 'Это балун'
-  },
-  modules: ['geoObject.addon.balloon', 'geoObject.addon.hint']
-}
-
-const myClick = () => {
-  alert(1)
+ 
 }
 
 const App = () => {
@@ -40,8 +33,7 @@ const App = () => {
           'geoObject.addon.balloon',
           'clusterer.addon.balloon',
         ]}>
-          {/* {coordinates.map(coordinate => <Placemark geometry={coordinate} key={coordinate[0]} {...placemarkProps} />)} */}
-          {coordinates.map(coordinate => <UserPlacemark geometry={coordinate} key={coordinate[0]} myClick={myClick} user={{ id: 0 }} {...placemarkProps} />)}
+          {coordinates.map(coordinate => <UserPlacemark geometry={coordinate} key={coordinate[0]} user={{ id: 0 }} {...placemarkProps} />)}
         </Map>
       </YMaps>
     </div>
