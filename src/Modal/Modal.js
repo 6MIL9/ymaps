@@ -1,21 +1,30 @@
-import React, { Component } from "react";
-
+import React from "react";
 import "./Modal.css";
+import PropTypes from "prop-types";
 
-class Modal extends Component {
+export default class Modal extends React.Component {
+  onClose = e => {
+    this.props.onClose && this.props.onClose(e);
+  };
   render() {
-    console.log(this.props.show);
+    if (!this.props.show) {
+      return null;
+    }
     return (
-      <React.Fragment>
-        {this.props.show && (
-          <div className="modal">
-            <h1>dfgdf</h1>
-            <button onClick={this.props.hideModal(false)}>Close Modal</button>
+      <div className="container">
+        <div className="modal" id="modal">
+          <h2>{this.props.coords}</h2>
+          <div className="actions">
+            <button className="toggle-button" onClick={this.onClose}>
+              close
+          </button>
           </div>
-        )}
-      </React.Fragment>
+        </div>
+      </div>
     );
   }
 }
-
-export default Modal;
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired
+};
