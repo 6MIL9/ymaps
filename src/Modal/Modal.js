@@ -13,7 +13,7 @@ export default class Modal extends React.Component {
     return (
       <div className="container">
         <div className="modal" id="modal">
-          <h2>{this.props.coords}</h2>
+          <h2>{this.props.coords[0]} - {this.props.coords[1]}</h2>
           <div className="actions">
             <button className="toggle-button" onClick={this.onClose}>
               close
