@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Placemark } from "react-yandex-maps";
 import img from './exclamation.png'
 import Modal from './../Modal/Modal';
